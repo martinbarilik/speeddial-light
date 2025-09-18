@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "Speed Dial Light",
+  "version": "1.0",
+  "description": "A super lightweight speed dial extension",
+  "chrome_url_overrides": {
+    "newtab": "newtab.html"
+  },
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon16.png",
+    "128": "icon16.png"
+  },
+  "permissions": ["storage"]
+}

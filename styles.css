@@ -1,0 +1,313 @@
+:root {
+    --bg-primary: #000;
+    --bg-secondary: #222;
+    --bg-tertiary: #333;
+    --bg-quaternary: #444;
+    --text-primary: #fff;
+    --text-secondary: #999;
+    --text-danger: #ff4444;
+    --border-color: #444;
+    --shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    --border-radius: 4px;
+    --border-radius-large: 8px;
+    --transition: 0.2s;
+    --icon-size: 200px;
+    --grid-gap: 50px;
+    --max-container-width: 1600px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    width: 100%;
+    max-width: var(--max-container-width);
+    padding: 20px;
+    text-align: center;
+}
+
+.links-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--grid-gap);
+    margin: 0 auto;
+    justify-items: center;
+}
+
+/* Responsive grid adjustments */
+@media (min-width: 768px) {
+    .links-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .links-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 1400px) {
+    .links-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.link-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: transform var(--transition);
+    text-decoration: none;
+    color: inherit;
+    max-width: 250px;
+}
+
+.link-item:hover {
+    transform: scale(1.05);
+}
+
+.link-icon {
+    width: var(--icon-size);
+    height: var(--icon-size);
+    object-fit: contain;
+    margin-bottom: 10px;
+    border-radius: var(--border-radius-large);
+}
+
+.link-title {
+    font-size: 1em;
+    text-align: center;
+    word-break: break-word;
+    max-width: 100%;
+    color: var(--text-primary);
+}
+
+/* Responsive icon sizing */
+@media (max-width: 768px) {
+    .link-icon {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .links-container {
+        gap: 30px;
+    }
+}
+
+/* Remove unused button styles as we now use context menu */
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: var(--bg-secondary);
+    padding: 20px;
+    border-radius: var(--border-radius-large);
+    width: 90%;
+    max-width: 400px;
+    box-shadow: var(--shadow);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.modal-title {
+    font-size: 1.2em;
+    color: var(--text-primary);
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    font-size: 1.5em;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color var(--transition);
+    border-radius: 50%;
+}
+
+.close-btn:hover {
+    background-color: var(--bg-quaternary);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--text-primary);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 8px;
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    color: var(--text-primary);
+    font-size: 14px;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #666;
+    box-shadow: 0 0 0 2px rgba(102, 102, 102, 0.2);
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color var(--transition);
+}
+
+.submit-btn:hover {
+    background-color: #555;
+}
+
+/* Context Menu styles */
+.context-menu {
+    display: none;
+    position: fixed;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    z-index: 1001;
+    min-width: 200px;
+    padding: 5px 0;
+}
+
+.context-menu-item {
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    color: var(--text-primary);
+    cursor: pointer;
+    font-size: 1.5em;
+    transition: background-color var(--transition);
+    display: flex;
+}
+
+.context-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25%;
+    font-size: 0.9em;
+}
+
+.context-text {
+    width: 75%;
+}
+
+.context-menu-item:hover {
+    background-color: var(--bg-tertiary);
+}
+
+.context-menu-item:first-child {
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.context-menu-item:last-child {
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+
+.context-menu-item:only-child {
+    border-radius: var(--border-radius);
+}
+
+.text-danger {
+    color: var(--text-danger) !important;
+}
+
+/* Context menu separator */
+.context-menu-separator {
+    height: 1px;
+    background-color: var(--border-color);
+    margin: 5px 10px;
+}
+
+/* Form help text */
+.form-help {
+    display: block;
+    font-size: 0.8em;
+    color: var(--text-secondary);
+    margin-top: 5px;
+}
+
+/* File input styling */
+.form-group input[type="file"] {
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    color: var(--text-primary);
+    padding: 6px;
+    cursor: pointer;
+}
+
+.form-group input[type="file"]::-webkit-file-upload-button {
+    background-color: var(--bg-quaternary);
+    border: none;
+    color: var(--text-primary);
+    padding: 4px 8px;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-right: 8px;
+    transition: background-color var(--transition);
+}
+
+.form-group input[type="file"]::-webkit-file-upload-button:hover {
+    background-color: #555;
+}
+
+/* Checkbox styling */
+.form-group input[type="checkbox"] {
+    width: auto;
+    margin-right: 8px;
+    accent-color: var(--bg-quaternary);
+}
