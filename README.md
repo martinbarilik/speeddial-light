@@ -1,6 +1,6 @@
 # SpeedDial Light
 
-A lightweight Chrome extension that replaces your new tab page with a customizable speed dial for your favorite websites.
+A lightweight vibe coded Chrome extension that replaces your new tab page with a customizable speed dial for your favorite websites. 
 
 ## Features
 
